@@ -1,0 +1,10 @@
+### @summary 404 - NOT FOUND
+### @route   GET /[anything unknown]
+### @access  Public
+### @header  null 
+### @body    null
+### @returns json 
+### {
+###   "message": "❌ 404 - Page Not Found!"
+### }
+GET http://localhost:1337/not_there

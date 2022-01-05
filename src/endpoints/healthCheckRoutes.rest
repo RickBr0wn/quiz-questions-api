@@ -1,0 +1,10 @@
+### @summary HEALTH CHECK
+### @route   GET /health/check
+### @access  Public
+### @header  null 
+### @body    null
+### @returns json 
+### {
+###   "message": "✅ : server running on localhost:1337"
+### }
+GET http://localhost:1337/health/check
