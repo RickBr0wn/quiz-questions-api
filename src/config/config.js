@@ -2,16 +2,16 @@
 const dotenv = require('dotenv')
 dotenv.config()
 
-const SERVER_NAME = process.env.HOSTNAME || 'localhost'
+const SERVER_HOSTNAME = process.env.HOSTNAME || 'localhost'
 const SERVER_PORT = process.env.PORT || 1337
 const BASE_URL =
 	process.env.NODE_ENV === 'production'
-		? 'https://warm-island-43015.herokuapp.com'
+		? 'https://quiz-questions-api.herokuapp.com'
 		: 'localhost:1337'
 
 const SERVER = {
 	url: BASE_URL,
-	name: SERVER_NAME,
+	name: SERVER_HOSTNAME,
 	port: SERVER_PORT
 }
 
