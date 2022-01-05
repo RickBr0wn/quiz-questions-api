@@ -5,6 +5,8 @@
 ### @body    null
 ### @returns json 
 ### {
-###   "message": "❌ 404 - Page Not Found!"
+###   "status": 404,
+###   "endpoint": "localhost:1337/not_there",
+###   "message": "Page Not Found!"
 ### }
 GET http://localhost:1337/not_there
