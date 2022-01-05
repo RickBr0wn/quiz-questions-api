@@ -2,7 +2,7 @@
 const dotenv = require('dotenv')
 dotenv.config()
 
-const SERVER_HOSTNAME = process.env.HOSTNAME || 'localhost'
+const SERVER_HOSTNAME = process.env.HOST || 'localhost'
 const SERVER_PORT = process.env.PORT || 1337
 const BASE_URL =
 	process.env.NODE_ENV === 'production'
