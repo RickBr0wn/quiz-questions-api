@@ -8,7 +8,7 @@ const healthCheckController = (req, res) => {
 	return res.status(200).json({
 		status: 200,
 		endpoint: `${config.server.url}/health/check`,
-		message: `server successfully running on ${config.server.name}:${config.server.port}.`
+		message: `server successfully running on ${config.server.name}`
 	})
 }
 
