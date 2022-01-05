@@ -1,0 +1,12 @@
+### @summary FALL BACK
+### @route   GET /
+### @access  Public
+### @header  null 
+### @body    null
+### @returns json 
+### {
+###   "status": "200",
+###   "endpoint": "localhost:1337/health/check",
+###		"message": "message": "server running on localhost:1337"
+### }
+GET http://localhost:1337/

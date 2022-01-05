@@ -9,6 +9,7 @@ const router = express()
 const config = require('./config/config')
 /** load the route files */
 const healthCheckRoutes = require('./routes/healthCheckRoute')
+const fallBackRoute = require('./routes/fallBackRoute')
 /** define the namespace for logging */
 const NAMESPACE = 'SERVER'
 
@@ -50,12 +51,15 @@ router.use((req, res, next) => {
 
 /** routes */
 router.use('/health/', healthCheckRoutes)
+router.use('/', fallBackRoute)
 
 /** error handling */
 router.use((req, res, next) => {
-	const error = new Error('❌ 404 - Page Not Found!')
+	const error = new Error('404 - Page Not Found!')
 
 	return res.status(404).json({
+		status: 404,
+		endpoint: `${config.server.url}${req.url}`,
 		message: error.message
 	})
 })
