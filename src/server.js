@@ -17,7 +17,7 @@ const res = require('express/lib/response')
 /** define the namespace for logging */
 const NAMESPACE = 'SERVER'
 
-// mongoose.connect(config.mongo.url, config.mongo.options)
+/** mongoose.connect(config.mongo.url, config.mongo.options) */
 mongoose.connect(config.mongo.url, config.mongo.options)
 
 const db = mongoose.connection
@@ -65,6 +65,8 @@ router.use((req, res, next) => {
 
 	next()
 })
+
+/** https://quiz-questions-api.herokuapp.com/api/quiz/questions/get-all-questions */
 
 /** routes */
 router.use('/api/quiz/', apiRoutes)

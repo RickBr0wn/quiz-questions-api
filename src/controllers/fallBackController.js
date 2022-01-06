@@ -8,6 +8,7 @@ const fallBackController = (req, res) => {
 	return res.status(200).json({
 		status: 200,
 		endpoint: `${config.server.url}${req.url}`,
+		config: config.mongo.url,
 		message: 'welcome to the quiz-questions-api.'
 	})
 }
