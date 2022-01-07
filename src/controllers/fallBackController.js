@@ -6,9 +6,10 @@ const fallBackController = (req, res) => {
 	logger.info(NAMESPACE, `Fall back called.`)
 
 	return res.status(200).json({
-		status: 200,
-		endpoint: `${config.server.url}${req.url}`,
-		config: config.mongo.url,
+		route: config.server.url + queries,
+		status: res.status,
+		error: false,
+		count: 0,
 		message: 'welcome to the quiz-questions-api.'
 	})
 }
