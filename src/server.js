@@ -24,7 +24,7 @@ const db = mongoose.connection
 db.on('connected', () => {
 	logger.info(
 		NAMESPACE,
-		`Connected to ${
+		`Mongo database connected via ${
 			process.env.NODE_ENV === 'production'
 				? 'https://quiz-questions-api.herokuapp.com'
 				: config.mongo.url
