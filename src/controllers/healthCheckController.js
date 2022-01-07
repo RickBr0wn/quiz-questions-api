@@ -1,6 +1,6 @@
 const config = require('../config/config')
 const logger = require('../middleware/logging')
-const NAMESPACE = 'HEALTH CHECK CONTROLLER'
+const NAMESPACE = 'HEALTH'
 
 const healthCheckController = (req, res) => {
 	logger.info(NAMESPACE, `Server health check called.`)

@@ -2,13 +2,13 @@ const Question = require('../models/question')
 const config = require('../config/config')
 const logger = require('../middleware/logging')
 
-const NAMESPACE = 'GET ALL QUESTIONS CONTROLLER'
+const NAMESPACE = 'ALL_Qs'
 
 const getAllQuestionsController = (req, res) => {
 	/* success */
 	res.status(200)
 	/* log the success */
-	logger.info(NAMESPACE, `Get all questions called.`)
+	logger.info(NAMESPACE, `Get all questions has been called.`)
 	/* to use in the response objects */
 	const queries = '/api/quiz/questions/get-all-questions/'
 	/* Query all of the documents */
@@ -19,7 +19,6 @@ const getAllQuestionsController = (req, res) => {
 			/* handles the case where there are no documents in the database */
 			if (documents.length === 0) {
 				res.json({
-					processENV: process.env.MONGO_URI,
 					route: config.server.url + queries,
 					status: 200,
 					message: `Welcome to the quiz-question-api. There are currently no questions. Please add a new 'question' to get started.`

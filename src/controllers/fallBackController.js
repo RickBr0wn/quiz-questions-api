@@ -1,6 +1,6 @@
 const config = require('../config/config')
 const logger = require('../middleware/logging')
-const NAMESPACE = 'FALL BACK CONTROLLER'
+const NAMESPACE = 'HOME__'
 
 const fallBackController = (req, res) => {
 	logger.info(NAMESPACE, `Fall back called.`)
