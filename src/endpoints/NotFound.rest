@@ -10,3 +10,8 @@
 ###   "message": "Page Not Found!"
 ### }
 GET http://localhost:1337/not_there
+
+###
+
+GET https://quiz-questions-api.herokuapp.com/not_there
+

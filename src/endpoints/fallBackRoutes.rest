@@ -10,3 +10,7 @@
 ###		"message": "message": "server running on localhost:1337"
 ### }
 GET http://localhost:1337/
+
+###
+
+GET https://quiz-questions-api.herokuapp.com/
