@@ -17,8 +17,11 @@ const res = require('express/lib/response')
 /** define the namespace for logging */
 const NAMESPACE = 'SERVER'
 
-/** mongoose.connect(config.mongo.url, config.mongo.options) */
 mongoose.connect(config.mongo.url, config.mongo.options)
+// mongoose.connect(
+// 	'mongodb+srv://admin:vaffob-gygrag-2rypFe@cluster0.aqbar.mongodb.net/quiz-questions-api?retryWrites=true&w=majority',
+// 	config.mongo.options
+// )
 
 const db = mongoose.connection
 

@@ -19,10 +19,12 @@ const getAllQuestionsController = (req, res) => {
 			/* handles the case where there are no documents in the database */
 			if (documents.length === 0) {
 				res.json({
+					processENV: process.env.MONGO_URI,
 					route: config.server.url + queries,
 					status: 200,
 					message: `Welcome to the quiz-question-api. There are currently no questions. Please add a new 'question' to get started.`
 				})
+				return
 			}
 			/* response object */
 			const response = {
@@ -42,6 +44,7 @@ const getAllQuestionsController = (req, res) => {
 			}
 			/* return the response object */
 			res.json(response)
+			return
 		})
 		.catch((error) => {
 			/* handle any errors */
