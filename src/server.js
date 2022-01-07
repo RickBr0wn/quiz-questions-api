@@ -56,11 +56,10 @@ router.use((req, res, next) => {
 	res.on('finish', () => {
 		logger.info(
 			NAMESPACE,
-			`[${req.method}] [${
-				config.server.url + req.url
-			}] [${req.socket.remoteAddress.replace('::ffff:', '')}] [${
-				res.statusCode
-			}]`
+			`[${req.method}] [${req.url}] [${req.socket.remoteAddress.replace(
+				'::ffff:',
+				''
+			)}] [${res.statusCode}]`
 		)
 	})
 
