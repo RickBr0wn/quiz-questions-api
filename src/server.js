@@ -78,8 +78,6 @@ router.use((req, res, next) => {
 	next()
 })
 
-/** https://quiz-questions-api.herokuapp.com/api/quiz/questions/get-all-questions */
-
 /** routes */
 router.use('/api/quiz/', apiRoutes)
 router.use('/health/', healthCheckRoutes)
@@ -89,7 +87,7 @@ router.use('/', fallBackRoute)
 router.use((req, res, next) => {
 	const error = new Error('404 - Page Not Found!')
 
-	logger.info()
+	logger.error(NAMESPACE, `404 - Page Not Found!`)
 
 	return res.status(404).json({
 		status: 404,
