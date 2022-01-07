@@ -45,21 +45,14 @@ db.on('error', (err) => {
 
 /** log the request */
 router.use((req, res, next) => {
-	logger.info(
-		NAMESPACE,
-		`[${req.method}], [${req.url}] [${req.socket.remoteAddress.replace(
-			'::ffff:',
-			''
-		)}]`
-	)
+	const ip = req.socket.remoteAddress.replace('::ffff:', '')
+
+	logger.info(NAMESPACE, `[${req.method}], [${req.url}] [${ip}]`)
 
 	res.on('finish', () => {
 		logger.info(
 			NAMESPACE,
-			`[${req.method}] [${req.url}] [${req.socket.remoteAddress.replace(
-				'::ffff:',
-				''
-			)}] [${res.statusCode}]`
+			`[${req.method}] [${req.url}] [${ip}] [${res.statusCode}]`
 		)
 	})
 
