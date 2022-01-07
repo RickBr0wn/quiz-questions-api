@@ -47,9 +47,10 @@ db.on('error', (err) => {
 router.use((req, res, next) => {
 	logger.info(
 		NAMESPACE,
-		`[${req.method}], [${
-			config.server.url + req.url
-		}] [${req.socket.remoteAddress.replace('::ffff:', '')}]`
+		`[${req.method}], [${req.url}] [${req.socket.remoteAddress.replace(
+			'::ffff:',
+			''
+		)}]`
 	)
 
 	res.on('finish', () => {
