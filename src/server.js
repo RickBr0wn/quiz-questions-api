@@ -18,32 +18,48 @@ const res = require('express/lib/response')
 const NAMESPACE = 'SERVER'
 
 mongoose.connect(config.mongo.url, config.mongo.options)
-// mongoose.connect(
-// 	'mongodb+srv://admin:vaffob-gygrag-2rypFe@cluster0.aqbar.mongodb.net/quiz-questions-api?retryWrites=true&w=majority',
-// 	config.mongo.options
-// )
 
 const db = mongoose.connection
 
 db.on('connected', () => {
-	logger.info(NAMESPACE, `Connected to ${config.mongo.url}`)
+	logger.info(
+		NAMESPACE,
+		`Connected to ${
+			process.env.NODE_ENV === 'production'
+				? 'https://quiz-questions-api.herokuapp.com'
+				: config.mongo.url
+		}`
+	)
 })
 
 db.on('error', (err) => {
-	logger.error(NAMESPACE, `Connection error ${config.mongo.url}`)
+	logger.error(
+		NAMESPACE,
+		`Connection error ${
+			process.env.NODE_ENV === 'production'
+				? 'https://quiz-questions-api.herokuapp.com'
+				: config.mongo.url
+		}: ${err.message}`
+	)
 })
 
 /** log the request */
 router.use((req, res, next) => {
 	logger.info(
 		NAMESPACE,
-		`METHOD - ${req.method}, URL - ${req.url}, IP - ${req.socket.remoteAddress}`
+		`[${req.method}], [${
+			config.server.url + req.url
+		}] [${req.socket.remoteAddress.replace('::ffff:', '')}]`
 	)
 
 	res.on('finish', () => {
 		logger.info(
 			NAMESPACE,
-			`METHOD - ${req.method}, URL - ${req.url}, IP - ${req.socket.remoteAddress}, STATUS - ${res.statusCode}`
+			`[${req.method}] [${
+				config.server.url + req.url
+			}] [${req.socket.remoteAddress.replace('::ffff:', '')}] [${
+				res.statusCode
+			}]`
 		)
 	})
 
@@ -95,6 +111,10 @@ const httpServer = http.createServer(router)
 httpServer.listen(config.server.port, () =>
 	logger.info(
 		NAMESPACE,
-		`Server running on ${config.server.name}:${config.server.port}`
+		`Server running on ${
+			process.env.NODE_ENV === 'production'
+				? 'https://quiz-questions-api.herokuapp.com'
+				: config.server.name
+		}:${config.server.port}`
 	)
 )
