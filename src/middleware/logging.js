@@ -1,4 +1,4 @@
-const getTimeStamp = () =>
+const getDateAndTimeStamp = () =>
 	new Date().toLocaleDateString() + ' - ' + new Date().toLocaleTimeString()
 
 const error = (namespace, message, object) => {
@@ -11,10 +11,12 @@ const error = (namespace, message, object) => {
 	} else {
 		if (object) {
 			console.error(
-				`[${getTimeStamp()}] [ERROR] [${namespace}] ${message}, ${object}`
+				`[${getDateAndTimeStamp()}] [ERROR] [${namespace}] ${message}, ${object}`
 			)
 		} else {
-			console.error(`[${getTimeStamp()}] [ERROR] [${namespace}] ${message}`)
+			console.error(
+				`[${getDateAndTimeStamp()}] [ERROR] [${namespace}] ${message}`
+			)
 		}
 	}
 }
@@ -29,10 +31,12 @@ const debug = (namespace, message, object) => {
 	} else {
 		if (object) {
 			console.debug(
-				`[${getTimeStamp()}] [DEBUG] [${namespace}] ${message}, ${object}`
+				`[${getDateAndTimeStamp()}] [DEBUG] [${namespace}] ${message}, ${object}`
 			)
 		} else {
-			console.debug(`[${getTimeStamp()}] [DEBUG] [${namespace}] ${message}`)
+			console.debug(
+				`[${getDateAndTimeStamp()}] [DEBUG] [${namespace}] ${message}`
+			)
 		}
 	}
 }
@@ -47,10 +51,12 @@ const info = (namespace, message, object) => {
 	} else {
 		if (object) {
 			console.info(
-				`[${getTimeStamp()}] [INFO] [${namespace}] ${message}, ${object}`
+				`[${getDateAndTimeStamp()}] [INFO] [${namespace}] ${message}, ${object}`
 			)
 		} else {
-			console.info(`[${getTimeStamp()}] [INFO] [${namespace}] ${message}`)
+			console.info(
+				`[${getDateAndTimeStamp()}] [INFO] [${namespace}] ${message}`
+			)
 		}
 	}
 }
@@ -65,10 +71,12 @@ const warn = (namespace, message, object) => {
 	} else {
 		if (object) {
 			console.warn(
-				`[${getTimeStamp()}] [WARN] [${namespace}] ${message}, ${object}`
+				`[${getDateAndTimeStamp()}] [WARN] [${namespace}] ${message}, ${object}`
 			)
 		} else {
-			console.warn(`[${getTimeStamp()}] [WARN] [${namespace}] ${message}`)
+			console.warn(
+				`[${getDateAndTimeStamp()}] [WARN] [${namespace}] ${message}`
+			)
 		}
 	}
 }

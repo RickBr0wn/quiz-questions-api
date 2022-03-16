@@ -13,6 +13,7 @@ const config = require('./config/config')
 const healthCheckRoutes = require('./routes/healthCheckRoute')
 const fallBackRoute = require('./routes/fallBackRoute')
 const apiRoutes = require('./routes/apiRoutes')
+const authRoutes = require('./routes/authRoutes')
 const res = require('express/lib/response')
 /** define the namespace for logging */
 const NAMESPACE = 'SERVER'
@@ -32,7 +33,7 @@ db.on('connected', () => {
 	)
 })
 
-db.on('error', (err) => {
+db.on('error', err => {
 	logger.error(
 		NAMESPACE,
 		`Connection error ${
@@ -79,12 +80,13 @@ router.use((req, res, next) => {
 })
 
 /** routes */
+router.use('/auth/', authRoutes)
 router.use('/api/quiz/', apiRoutes)
 router.use('/health/', healthCheckRoutes)
 router.use('/', fallBackRoute)
 
 /** error handling */
-router.use((req, res, next) => {
+router.use((req, res) => {
 	const error = new Error('404 - Page Not Found!')
 
 	logger.error(NAMESPACE, `404 - Page Not Found!`)
